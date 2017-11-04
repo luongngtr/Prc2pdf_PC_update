@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.pcuser.myapplication.MainActivity">
+    <!--
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <include layout="@layout/content_main" />
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@android:drawable/ic_dialog_email" />
+
+    -->
+
+    <RelativeLayout
+        android:id="@+id/my_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/my_search_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="112dp"
+            android:text="Search" />
+
+        <HorizontalScrollView
+            android:id="@+id/horizontalScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@+id/my_search_button"
+            android:layout_alignTop="@+id/my_search_button"
+            android:layout_toEndOf="@+id/my_search_button"
+            android:layout_toRightOf="@+id/my_search_button"
+            android:fillViewport="true">
+
+            <TextView
+                android:id="@+id/my_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:enabled="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:lines="1"
+                android:longClickable="true"
+                android:maxLines="1"
+                android:scrollHorizontally="true"
+                android:text="Pick a prc file"
+                android:textAlignment="center"
+                android:textIsSelectable="true"
+                android:textSize="24sp"
+                android:typeface="monospace" />
+        </HorizontalScrollView>
+
+        <Button
+            android:id="@+id/my_close_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/my_convert_button"
+            android:layout_alignBottom="@+id/my_convert_button"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="67dp"
+            android:layout_marginRight="67dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Close"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/my_convert_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/my_search_button"
+            android:layout_marginLeft="55dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="119dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Convert"
+            android:textSize="24sp" />
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>
