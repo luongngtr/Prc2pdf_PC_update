@@ -10,23 +10,39 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
+    private static final int PICKFILE_REQUEST_CODE = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.my_text_view).setSelected(true);
+        TextView my_text_view = (TextView) findViewById(R.id.my_text_view);
+        my_text_view.setSelected(true);
 
-        final Button button = (Button) findViewById(R.id.my_close_button);
-        button.setOnClickListener(new View.OnClickListener() {
+        final Button my_close_button = (Button) findViewById(R.id.my_close_button);
+        my_close_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
                 Intent intent = new Intent(Intent.ACTION_MAIN);
                 intent.addCategory(Intent.CATEGORY_HOME);
                 startActivity(intent);
+            }
+        });
+
+
+
+        final Button my_search_button = (Button) findViewById(R.id.my_search_button);
+        my_search_button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
+
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                intent.setType("file/*");
+                startActivityForResult(intent, PICKFILE_REQUEST_CODE);
             }
         });
 
@@ -43,6 +59,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         */
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // TODO Auto-generated method stub
+        switch(requestCode){
+            case PICKFILE_REQUEST_CODE:
+                if(resultCode==RESULT_OK){
+                    String FilePath = data.getData().getPath();
+                    TextView my_text_view = (TextView) findViewById(R.id.my_text_view);
+                    my_text_view.setText(FilePath);
+                }
+                break;
+
+        }
     }
 
     @Override
