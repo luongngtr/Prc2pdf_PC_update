@@ -2,15 +2,15 @@ package com.example.pcuser.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
     private static final int PICKFILE_REQUEST_CODE = 1;
@@ -46,6 +46,37 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        final Button my_convert_button = (Button) findViewById(R.id.my_convert_button);
+        my_convert_button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
+                TextView my_text_view = (TextView) findViewById(R.id.my_text_view);
+                String file_path = my_text_view.getText().toString();
+                if (!file_path.equals("Pick a prc file")) {
+                    // Create a new file path with the extension .pdf
+                    int idx = file_path.indexOf(".prc");
+                    String new_file_path;
+                    if (idx != -1) {
+                        new_file_path = file_path.substring(0, idx) + ".pdf";
+                    } else {
+                        new_file_path = file_path + ".pdf";
+                    }
+                    // Read the file
+                    File file = new File(file_path);
+                    try {
+                        Toast.makeText(getApplicationContext(), new_file_path,Toast.LENGTH_LONG).show();
+                    } catch(Exception e) {
+                        Toast.makeText(getApplicationContext(), "Cannot convert the input file!",Toast.LENGTH_LONG).show();
+                    }
+
+
+                }
+
+
+
+            }
+        });
+
         /*
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -66,10 +97,11 @@ public class MainActivity extends AppCompatActivity {
         // TODO Auto-generated method stub
         switch(requestCode){
             case PICKFILE_REQUEST_CODE:
+
                 if(resultCode==RESULT_OK){
-                    String FilePath = data.getData().getPath();
+                    String file_path = data.getData().getPath();
                     TextView my_text_view = (TextView) findViewById(R.id.my_text_view);
-                    my_text_view.setText(FilePath);
+                    my_text_view.setText(file_path);
                 }
                 break;
 
