@@ -64,7 +64,9 @@ public class MainActivity extends AppCompatActivity {
                     // Read the file
                     File file = new File(file_path);
                     try {
-                        Toast.makeText(getApplicationContext(), new_file_path,Toast.LENGTH_LONG).show();
+                        int ret = ConvLib.mobiToEpubNative(file_path, new_file_path);
+                        //Toast.makeText(getApplicationContext(), new_file_path,Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), Integer.toString(ret),Toast.LENGTH_LONG).show();
                     } catch(Exception e) {
                         Toast.makeText(getApplicationContext(), "Cannot convert the input file!",Toast.LENGTH_LONG).show();
                     }
