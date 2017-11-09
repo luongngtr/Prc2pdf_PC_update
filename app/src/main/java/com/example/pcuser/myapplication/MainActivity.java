@@ -57,9 +57,9 @@ public class MainActivity extends AppCompatActivity {
                     int idx = file_path.indexOf(".prc");
                     String new_file_path;
                     if (idx != -1) {
-                        new_file_path = file_path.substring(0, idx) + ".pdf";
+                        new_file_path = file_path.substring(0, idx) + ".epub";
                     } else {
-                        new_file_path = file_path + ".pdf";
+                        new_file_path = file_path + ".epub";
                     }
                     // Read the file
                     File file = new File(file_path);
